@@ -1,0 +1,864 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f8f9f6;
+  color: #2c2c2c;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ================= THEME ================= */
+:root {
+  --primary: #0f3d1e;
+  --primary-light: #14532d;
+  --accent: #d4af37;
+  --dark: #0b2a15;
+  --white: #ffffff;
+  --shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ================= GLOBAL SECTION ================= */
+section {
+  padding: 60px 0;
+  position: relative;
+}
+
+section > * {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 25px;
+}
+
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  height: 65px;
+}
+
+.school-name h2 {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.school-name span {
+  font-size: 12px;
+  color: #666;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  position: relative;
+  transition: 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ================= HERO ================= */
+.hero {
+  margin-top: 100px;
+  height: 90vh;
+  padding: 0;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0.45)),
+    url("../../bg.JPG") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  color: #fff;
+  max-width: 900px;
+  line-height: 1.3;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  animation: fadeUp 1.5s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= HEADINGS ================= */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+h1::after,
+h2::after {
+  content: "";
+  width: 70px;
+  height: 3px;
+  background: var(--accent);
+  display: block;
+  margin: 12px auto 0;
+}
+
+/* ================= WELCOME ================= */
+.welcome-section {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.welcome-text {
+  flex: 1;
+}
+
+.welcome-image img {
+  width: 100%;
+  max-width: 450px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+/* ================= LEADERS ================= */
+.leader-box {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 70px;
+}
+
+.leader-box.reverse {
+  flex-direction: row-reverse;
+}
+
+.leader-image img {
+  width: 280px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+/* ================= GRID SECTIONS ================= */
+/* ================= CLASS PROGRAMS LAYOUT ================= */
+
+.programs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Secondary centered under 2nd & 3rd box */
+.secondary-card {
+  grid-column: 2 / span 2;
+  justify-self: center;
+  width: 100%;
+}
+/* ================= CLASS PROGRAMS PERFECT CENTER ================= */
+
+.programs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+  justify-items: center;
+}
+
+/* All cards same square size */
+.programs .card {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  text-align: center;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* Place secondary EXACTLY center */
+.secondary-card {
+  grid-column: 2 / 4;
+  grid-row: 2;
+  justify-self: center;
+  width: 260px; /* same width as others */
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .programs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .secondary-card {
+    grid-column: 1 / -1;
+    width: 260px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .programs {
+    grid-template-columns: 1fr;
+  }
+
+  .secondary-card {
+    grid-column: auto;
+    width: 100%;
+  }
+}
+
+
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+  justify-items: center;
+}
+.teaching-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+@media (max-width: 992px) {
+  .teaching-methods {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .teaching-methods {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= CARDS ================= */
+.card,
+.facility-card,
+.staff-card,
+.news-card,
+.testimonial-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+}
+
+.card:hover,
+.facility-card:hover,
+.news-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+/* ================= FACILITY ================= */
+.facility-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* ================= STAFF ================= */
+.staff-carousel {
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.staff-slider {
+  display: flex;
+  gap: 25px;
+}
+
+.staff-card {
+  width: 240px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.staff-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* ================= GALLERY ================= */
+/* ================= GALLERY GRID (NO SCROLL) ================= */
+
+.slider-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.slide {
+  width: 100%;
+}
+
+.slide img,
+.slide video {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: 0.4s ease;
+}
+
+.slide img:hover,
+.slide video:hover {
+  transform: scale(1.05);
+}
+
+/* ================= MODAL FIX PREMIUM ================= */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  padding: 60px 20px;
+  overflow-y: auto;
+}
+
+.modal-content {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  animation: fadeUp 0.4s ease;
+}
+
+/* FIX IMAGE SIZE */
+.modal-content img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.modal-content img:hover {
+  transform: scale(1.05);
+}
+
+/* FIX VIDEO SIZE */
+.modal-content video {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* CLOSE BUTTON */
+.modal .close {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 2100;
+  transition: 0.3s;
+}
+
+.modal .close:hover {
+  color: var(--accent);
+}
+/* ================= NEWS ================= */
+.news-slider {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* ================= TESTIMONIAL ================= */
+.testimonial-slider {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: var(--dark);
+  color: white;
+  padding: 80px 0 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column h2 {
+  color: var(--accent);
+}
+
+.footer a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer a:hover {
+  color: var(--accent);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ================= BUTTON ================= */
+.view-more-btn,
+.cta-download a,
+.whatsapp-button {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 12px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+.view-more-btn:hover,
+.cta-download a:hover,
+.whatsapp-button:hover {
+  background: var(--accent);
+  color: black;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeUp 0.8s ease;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .leader-box,
+  .leader-box.reverse,
+  .welcome-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header {
+    padding: 15px 25px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 22px;
+  }
+
+  section {
+    padding: 70px 0;
+  }
+}
+@media (max-width: 992px) {
+  .facility-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .facility-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ================= PREMIUM GOLD BUTTON ================= */
+
+.view-more-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-more-btn:hover {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 0 20px rgba(212,175,55,0.5);
+  transform: translateY(-3px);
+}
+
+/* ================= ACADEMICS 2-COLUMN ================= */
+
+.curriculum-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.curriculum-left ul {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.curriculum-left li {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.curriculum-right img {
+  width: 420px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  display: block;
+  margin: auto;
+}
+
+@media (max-width: 992px) {
+  .curriculum-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .curriculum-right img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+
+
+/* ================= GALLERY TOGGLE ================= */
+
+/* ================= GALLERY TOGGLE ARROW ================= */
+
+.gallery-toggle{
+  text-align:center;
+  margin-top:40px;
+  cursor:pointer;
+}
+
+.arrow-down{
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border-right:3px solid var(--accent);
+  border-bottom:3px solid var(--accent);
+  transform:rotate(45deg);
+  transition:0.4s;
+}
+
+/* rotate arrow when open */
+
+.arrow-down.active{
+  transform:rotate(-135deg);
+}
+
+/* hide items after 4 */
+
+.gallery-images .slide:nth-child(n+5),
+.gallery-videos .slide:nth-child(n+5){
+  display:none;
+}
+
+/* ================= ULTRA RESPONSIVE FIX ================= */
+
+/* ===== Large Laptop ===== */
+@media (max-width:1200px){
+
+section > *{
+padding:0 20px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+}
+
+/* ===== Tablet ===== */
+@media (max-width:992px){
+
+header{
+padding:15px 20px;
+}
+
+.logo img{
+height:55px;
+}
+
+.school-name h2{
+font-size:18px;
+}
+
+.hero{
+height:auto;
+padding:120px 20px 80px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+/* leaders + welcome stack */
+.welcome-section,
+.leader-box,
+.leader-box.reverse{
+flex-direction:column;
+text-align:center;
+gap:30px;
+}
+
+/* curriculum section */
+.curriculum-wrapper{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.curriculum-right img{
+width:100%;
+height:auto;
+}
+
+}
+
+/* ===== Mobile ===== */
+@media (max-width:768px){
+
+header{
+flex-direction:column;
+gap:10px;
+padding:15px;
+}
+
+nav ul{
+flex-direction:column;
+gap:12px;
+align-items:center;
+}
+
+.hero h1{
+font-size:26px;
+line-height:1.4;
+}
+
+/* facility grid */
+.facility-grid{
+grid-template-columns:1fr;
+}
+
+/* teaching grid */
+.teaching-methods{
+grid-template-columns:1fr;
+}
+
+/* programs grid */
+.programs{
+grid-template-columns:1fr;
+}
+
+/* staff cards smaller */
+.staff-card{
+width:200px;
+}
+
+.staff-card img{
+height:220px;
+}
+
+/* gallery */
+.slider-container{
+grid-template-columns:1fr;
+}
+
+.slide img,
+.slide video{
+height:200px;
+}
+
+}
+
+/* ===== Small Phones ===== */
+@media (max-width:480px){
+
+.hero h1{
+font-size:22px;
+}
+
+.logo{
+flex-direction:column;
+text-align:center;
+}
+
+.school-name span{
+font-size:11px;
+}
+
+/* gallery smaller */
+.slide img,
+.slide video{
+height:180px;
+}
+
+.footer-container{
+flex-direction:column;
+text-align:center;
+gap:25px;
+}
+
+}
+
+/* ================= WHATSAPP BUTTON ================= */
+
+.whatsapp-button{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+background:#25D366;
+color:white;
+padding:12px 22px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s ease;
+margin-top:15px;
+box-shadow:0 6px 18px rgba(37,211,102,0.35);
+font-size:15px;
+}
+
+.whatsapp-button:hover{
+background:#1ebe5d;
+transform:translateY(-2px);
+box-shadow:0 8px 22px rgba(37,211,102,0.45);
+}
+
+/* ===== Mobile Responsive ===== */
+
+@media (max-width:600px){
+
+.whatsapp-button{
+padding:10px 18px;
+font-size:14px;
+}
+
+}
